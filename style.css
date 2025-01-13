@@ -1,0 +1,246 @@
+/* This styles all <h1> elements on your website */
+:root {
+    --text-color:rgb(244, 244, 255);
+    --background-color:rgb(60, 60, 60);
+    --line-color: rgb(30, 30, 30);
+
+    --button-width: 12vw;
+    --button-height: 20px;
+
+    --padding: 15px;
+    --text-padding: 15px;
+
+    --title-font: 'Georgia', 'serif';
+    --text-font: 'Monaco';
+
+    --title-position-x: 7vw;
+    --title-position-y: 25vh;
+
+    --about-position-x: 45vw;
+    --about-position-y: 5vh;
+
+    --make-x: calc(var(--about-position-x) + var(--button-width));
+    --make-y: var(--about-position-y);
+
+    --hobbies-x: calc(var(--about-position-x) + 2*var(--button-width));
+    --hobbies-y: var(--about-position-y);
+
+    --contact-x: calc(var(--about-position-x) + 3*var(--button-width));
+    --contact-y: var(--about-position-y);
+
+    --vertical-line-x: 38vw;
+    --horizontal-line-y: calc(var(--about-position-y) + var(--button-height) + var(--padding) );
+
+    --content-box-y: calc(var(--horizontal-line-y) + 5*var(--padding))
+}
+
+body {
+    background-color: var(--background-color);
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* positioning of the wider text boxes that hold inner text */
+.about-section {
+    position: fixed;
+    top: var(--about-position-y);
+    left: var(--about-position-x);
+}
+
+.make-section {
+    position: fixed;
+    top: var(--make-y);
+    left: var(--make-x);
+}
+
+.hobbies-section {
+    position: fixed;
+    top: var(--hobbies-y);
+    left: var(--hobbies-x);
+}
+
+.contact-section {
+    position: fixed;
+    top: var(--contact-y);
+    left: var(--contact-x);
+}
+
+.hidden {
+    display: none;
+}
+
+.content-area {
+    position: absolute;
+    top: var(--horizontal-line-y);
+    left: var(--about-position-x);
+    z-index: -10;
+    width: calc(4*var(--button-width))
+}
+
+.content-text {
+    position: absolute;
+    top: calc(var(--text-padding)); 
+    font-weight: normal;
+    font-size: 15px;
+    color: var(--text-color);
+    font-family: var(--text-font);
+    max-width: calc(4*var(--button-width));
+    line-height: 2;
+}
+
+/* text formatting for the upper clicky bits*/
+
+.menu-text {
+    cursor: pointer;
+    display: inline;
+    color: var(--text-color);
+    font-family: var(--text-font);
+    font-size: 20px;
+    width: 100px;
+}
+
+/* styling (also for debugging) the outer containers for the text*/
+
+.button-style {
+    text-align: center;
+    width: var(--button-width);
+    height: var(--button-height);
+    /*border: 2px solid var(--line-color);*/
+    color: var(--text-color);
+}
+
+/* formatting for text on the LHS */
+
+.title-style {
+    color: var(--text-color);
+    text-align: center;
+    font-family: var(--text-font);
+    position: fixed;
+    top: var(--title-position-y);
+    left: var(--title-position-x);
+}
+
+.big-header {
+    font-size: 36px;
+    font-weight: normal;
+    color: var(--text-color)
+}
+
+.small-header {
+    font-size: 18px;
+    font-weight: normal;
+    font-family: var(--text-font);
+    color: var(--text-color)
+}
+
+
+.vertical-line {
+    border-left: 2px solid var(--line-color);
+    height: 100vh;
+    position: fixed;
+    left: var(--vertical-line-x);
+    top: 0;
+}
+
+.horizontal-line {
+    position: fixed;
+    left: var(--vertical-line-x);
+    top: var(--horizontal-line-y);
+    
+    height: 2px;
+    width: calc(100vw - var(--vertical-line-x));
+
+    background-color: var(--line-color);
+}
+
+.about-menu-line {
+    position: fixed;
+    top: calc(var(--horizontal-line-y) - 2px);
+    left: var(--about-position-x);
+    width: var(--button-width);
+    height: 2px;
+    background-color: var(--text-color);
+    z-index: 1000;
+}
+
+.make-menu-line {
+    position: fixed;
+    top: calc(var(--horizontal-line-y) - 2px);
+    left: var(--make-x);
+    width: var(--button-width);
+    height: 2px;
+    background-color: var(--text-color);
+    z-index: 1000;
+}
+
+.hobbies-menu-line {
+    position: fixed;
+    top: calc(var(--horizontal-line-y) - 2px);
+    left: var(--hobbies-x);
+    width: var(--button-width);
+    height: 2px;
+    background-color: var(--text-color);
+    z-index: 1000;
+}
+
+.contact-menu-line {
+    position: fixed;
+    top: calc(var(--horizontal-line-y) - 2px);
+    left: var(--contact-x);
+    width: var(--button-width);
+    height: 2px;
+    background-color: var(--text-color);
+    z-index: 1000;
+}
+
+.menu-box {
+    position: fixed;
+    left: calc(var(--vertical-line-x) + 2px);
+    right: 0;
+    top: 0;
+    height: var(--horizontal-line-y);
+    
+    background-color: var(--background-color);
+}
+
+/* icon formatting */
+
+.icon-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-style img {
+    width: 30px;
+    height: 30px;
+}
+
+.mail-icon-style img {
+    width: 30px;
+    height: 25px;
+}
+
+.gallery-image {
+    width: 300px;
+    border: 5px solid var(--line-color);
+    border-radius: 3%;
+}
+
+.gallery-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    margin-bottom: 2em;
+
+}
+
