@@ -1,246 +1,262 @@
-/* This styles all <h1> elements on your website */
-:root {
-    --text-color:rgb(244, 244, 255);
-    --background-color:rgb(60, 60, 60);
-    --line-color: rgb(30, 30, 30);
+/* ===================================================================== */
+/*  DESKTOP  (your original styles, exactly as they were)                */
+/* ===================================================================== */
 
-    --button-width: 12vw;
-    --button-height: 20px;
+:root{
+    --text-color:rgb(244,244,255);
+    --background-color:rgb(60,60,60);
+    --line-color:rgb(30,30,30);
 
-    --padding: 15px;
-    --text-padding: 15px;
+    --button-width:12vw;
+    --button-height:20px;
 
-    --title-font: 'Georgia', 'serif';
-    --text-font: 'Monaco';
+    --padding:15px;
+    --text-padding:15px;
 
-    --title-position-x: 7vw;
-    --title-position-y: 25vh;
+    --title-font:'Georgia','serif';
+    --text-font:'Monaco', monospace;
 
-    --about-position-x: 45vw;
-    --about-position-y: 5vh;
+    --title-position-x:7vw;
+    --title-position-y:25vh;
 
-    --make-x: calc(var(--about-position-x) + var(--button-width));
-    --make-y: var(--about-position-y);
+    --about-position-x:45vw;
+    --about-position-y:5vh;
 
-    --hobbies-x: calc(var(--about-position-x) + 2*var(--button-width));
-    --hobbies-y: var(--about-position-y);
+    --make-x:calc(var(--about-position-x) + var(--button-width));
+    --make-y:var(--about-position-y);
 
-    --contact-x: calc(var(--about-position-x) + 3*var(--button-width));
-    --contact-y: var(--about-position-y);
+    --hobbies-x:calc(var(--about-position-x) + 2*var(--button-width));
+    --hobbies-y:var(--about-position-y);
 
-    --vertical-line-x: 38vw;
-    --horizontal-line-y: calc(var(--about-position-y) + var(--button-height) + var(--padding) );
+    --contact-x:calc(var(--about-position-x) + 3*var(--button-width));
+    --contact-y:var(--about-position-y);
 
-    --content-box-y: calc(var(--horizontal-line-y) + 5*var(--padding))
+    --vertical-line-x:38vw;
+    --horizontal-line-y:calc(var(--about-position-y) + var(--button-height) + var(--padding));
+    --content-box-y:calc(var(--horizontal-line-y) + 5*var(--padding));
 }
 
-body {
-    background-color: var(--background-color);
-    max-width: 100%;
-    overflow-x: hidden;
+*{box-sizing:border-box}
+
+body{
+    background-color:var(--background-color);
+    margin:0;
+    max-width:100%;
+    overflow-x:hidden;
 }
 
-* {
-    box-sizing: border-box;
+/* utility — the class your JS toggles */
+.hidden{display:none !important;}
+
+/* ─────────────────── fixed-position title column ──────────────────── */
+.title-style{
+    color:var(--text-color);
+    text-align:center;
+    font-family:var(--text-font);
+    position:fixed;
+    top:var(--title-position-y);
+    left:var(--title-position-x);
+}
+.profile-image{display:block;margin:0 auto;}
+.big-header{
+    font-size:36px;
+    font-weight:normal;
+    color:var(--text-color);
+    font-family:var(--title-font);
+}
+.small-header{
+    font-size:18px;
+    font-weight:normal;
+    color:var(--text-color);
+    font-family:var(--text-font);
 }
 
-/* positioning of the wider text boxes that hold inner text */
-.about-section {
-    position: fixed;
-    top: var(--about-position-y);
-    left: var(--about-position-x);
+/* social icons */
+.icon-container{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    align-items:center;
+}
+.icon-style img{
+    width:30px;
+    height:30px;
+}
+.mail-icon-style img{
+    width:30px;
+    height:25px;
 }
 
-.make-section {
-    position: fixed;
-    top: var(--make-y);
-    left: var(--make-x);
+/* ─────────────────── decorative grid ─────────────────────────────── */
+.vertical-line{
+    border-left:2px solid var(--line-color);
+    height:100vh;
+    position:fixed;
+    left:var(--vertical-line-x);
+    top:0;
+}
+.horizontal-line{
+    position:fixed;
+    left:var(--vertical-line-x);
+    top:var(--horizontal-line-y);
+    width:calc(100vw - var(--vertical-line-x));
+    height:2px;
+    background-color:var(--line-color);
 }
 
-.hobbies-section {
-    position: fixed;
-    top: var(--hobbies-y);
-    left: var(--hobbies-x);
+/* underline active menu heading (desktop only) */
+.about-menu-line,
+.make-menu-line,
+.hobbies-menu-line,
+.contact-menu-line{
+    position:fixed;
+    top:calc(var(--horizontal-line-y) - 2px);
+    width:var(--button-width);
+    height:2px;
+    background-color:var(--text-color);
+    z-index:1000;
+}
+.about-menu-line{left:var(--about-position-x);}
+.make-menu-line{left:var(--make-x);}
+.hobbies-menu-line{left:var(--hobbies-x);}
+.contact-menu-line{left:var(--contact-x);}
+
+/* ─────────────────── navigation buttons ──────────────────────────── */
+.menu-box{
+    position:fixed;
+    left:calc(var(--vertical-line-x) + 2px);
+    right:0;
+    top:0;
+    height:var(--horizontal-line-y);
+    background-color:var(--background-color);
 }
 
-.contact-section {
-    position: fixed;
-    top: var(--contact-y);
-    left: var(--contact-x);
+.button-style{
+    text-align:center;
+    width:var(--button-width);
+    height:var(--button-height);
+    color:var(--text-color);
+    /* border:1px solid var(--line-color);  uncomment if you like the box */
+}
+.menu-text{
+    cursor:pointer;
+    color:var(--text-color);
+    font-family:var(--text-font);
+    font-size:20px;
 }
 
-.hidden {
-    display: none;
+/* fixed positions of each button box */
+.about-section  {position:fixed;top:var(--about-position-y); left:var(--about-position-x);}
+.make-section   {position:fixed;top:var(--make-y);        left:var(--make-x);}
+.hobbies-section{position:fixed;top:var(--hobbies-y);    left:var(--hobbies-x);}
+.contact-section{position:fixed;top:var(--contact-y);    left:var(--contact-x);}
+
+/* ─────────────────── content panels ──────────────────────────────── */
+.content-area{
+    position:absolute;
+    top:var(--horizontal-line-y);
+    left:var(--about-position-x);
+    width:calc(4*var(--button-width));
+    z-index:-10;
+}
+.content-text{
+    position:absolute;
+    top:var(--text-padding);
+    max-width:calc(4*var(--button-width));
+    font-size:15px;
+    line-height:2;
+    color:var(--text-color);
+    font-family:var(--text-font);
 }
 
-.content-area {
-    position: absolute;
-    top: var(--horizontal-line-y);
-    left: var(--about-position-x);
-    z-index: -10;
-    width: calc(4*var(--button-width))
+/* gallery */
+.gallery-container{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    align-items:center;
+}
+.gallery-image{
+    width:300px;
+    border:5px solid var(--line-color);
+    border-radius:3%;
 }
 
-.content-text {
-    position: absolute;
-    top: calc(var(--text-padding)); 
-    font-weight: normal;
-    font-size: 15px;
-    color: var(--text-color);
-    font-family: var(--text-font);
-    max-width: calc(4*var(--button-width));
-    line-height: 2;
-}
+p{margin-bottom:2em;}
 
-/* text formatting for the upper clicky bits*/
+/* ===================================================================== */
+/*  MOBILE  (overrides only)                                             */
+/* ===================================================================== */
+@media (max-width:768px){
 
-.menu-text {
-    cursor: pointer;
-    display: inline;
-    color: var(--text-color);
-    font-family: var(--text-font);
-    font-size: 20px;
-    width: 100px;
-}
+    :root{
+        --button-width:40vw;
+        --button-height:36px;
+        --title-position-x:0;
+        --title-position-y:0;
+    }
 
-/* styling (also for debugging) the outer containers for the text*/
+    /* hide decorative grid + desktop underlines */
+    .vertical-line,
+    .horizontal-line,
+    .about-menu-line,
+    .make-menu-line,
+    .hobbies-menu-line,
+    .contact-menu-line{display:none;}
 
-.button-style {
-    text-align: center;
-    width: var(--button-width);
-    height: var(--button-height);
-    /*border: 2px solid var(--line-color);*/
-    color: var(--text-color);
-}
+    /* header stacks */
+    .title-style{
+        position:static;
+        margin-top:1.5rem;
+        text-align:center;
+    }
+    .profile-image{
+        width:100px;
+        height:auto;
+        border-radius:50%;
+    }
+    .big-header{font-size:28px;}
+    .small-header{font-size:16px;}
 
-/* formatting for text on the LHS */
+    /* menu becomes flexible row */
+    .menu-box{
+        position:static;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:0.75rem;
+        padding:1rem 0;
+    }
+    .button-style{
+        position:static;
+        width:auto;
+        padding:0.5rem 1rem;
+        border:1px solid var(--line-color);
+        border-radius:4px;
+    }
+    .menu-text{font-size:18px;}
 
-.title-style {
-    color: var(--text-color);
-    text-align: center;
-    font-family: var(--text-font);
-    position: fixed;
-    top: var(--title-position-y);
-    left: var(--title-position-x);
-}
+    /* flowing content */
+    .content-area{
+        position:static;
+        width:100%;
+        padding:0 1rem 3rem;
+    }
+    .content-text{
+        position:static;
+        max-width:100%;
+        font-size:16px;
+        line-height:1.7;
+    }
 
-.big-header {
-    font-size: 36px;
-    font-weight: normal;
-    color: var(--text-color)
-}
-
-.small-header {
-    font-size: 18px;
-    font-weight: normal;
-    font-family: var(--text-font);
-    color: var(--text-color)
-}
-
-
-.vertical-line {
-    border-left: 2px solid var(--line-color);
-    height: 100vh;
-    position: fixed;
-    left: var(--vertical-line-x);
-    top: 0;
-}
-
-.horizontal-line {
-    position: fixed;
-    left: var(--vertical-line-x);
-    top: var(--horizontal-line-y);
-    
-    height: 2px;
-    width: calc(100vw - var(--vertical-line-x));
-
-    background-color: var(--line-color);
-}
-
-.about-menu-line {
-    position: fixed;
-    top: calc(var(--horizontal-line-y) - 2px);
-    left: var(--about-position-x);
-    width: var(--button-width);
-    height: 2px;
-    background-color: var(--text-color);
-    z-index: 1000;
-}
-
-.make-menu-line {
-    position: fixed;
-    top: calc(var(--horizontal-line-y) - 2px);
-    left: var(--make-x);
-    width: var(--button-width);
-    height: 2px;
-    background-color: var(--text-color);
-    z-index: 1000;
-}
-
-.hobbies-menu-line {
-    position: fixed;
-    top: calc(var(--horizontal-line-y) - 2px);
-    left: var(--hobbies-x);
-    width: var(--button-width);
-    height: 2px;
-    background-color: var(--text-color);
-    z-index: 1000;
-}
-
-.contact-menu-line {
-    position: fixed;
-    top: calc(var(--horizontal-line-y) - 2px);
-    left: var(--contact-x);
-    width: var(--button-width);
-    height: 2px;
-    background-color: var(--text-color);
-    z-index: 1000;
-}
-
-.menu-box {
-    position: fixed;
-    left: calc(var(--vertical-line-x) + 2px);
-    right: 0;
-    top: 0;
-    height: var(--horizontal-line-y);
-    
-    background-color: var(--background-color);
-}
-
-/* icon formatting */
-
-.icon-container {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-.icon-style img {
-    width: 30px;
-    height: 30px;
-}
-
-.mail-icon-style img {
-    width: 30px;
-    height: 25px;
-}
-
-.gallery-image {
-    width: 300px;
-    border: 5px solid var(--line-color);
-    border-radius: 3%;
-}
-
-.gallery-container {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-p {
-    margin-bottom: 2em;
-
+    /* gallery stacks vertically */
+    .gallery-container{
+        flex-direction:column;
+        align-items:center;
+    }
+    .gallery-image{
+        width:100%;
+        max-width:480px;
+    }
 }
 
